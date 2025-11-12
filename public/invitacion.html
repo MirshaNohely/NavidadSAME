@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invitación Especial</title>
+  <style>
+    body {
+      font-family: "Poppins", sans-serif;
+      text-align: center;
+      background: #f9fafb;
+      color: #333;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    .logo {
+      width: 150px;
+      margin-bottom: 1rem;
+    }
+
+    video {
+      width: 90%;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    button {
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .confirmar {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .cancelar {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.8;
+    }
+
+    a {
+      display: block;
+      margin-top: 1rem;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <img src="logo.png" alt="Logo de la empresa" class="logo" />
+  <h1>🎉 ¡Estás invitado a nuestra celebración! 🎉</h1>
+
+  <video autoplay muted loop>
+    <source src="video.mp4" type="video/mp4" />
+    Tu navegador no soporta videos.
+  </video>
+
+  <div class="botones">
+    <button class="confirmar" id="btnConfirmar">Confirmar asistencia</button>
+    <button class="cancelar" id="btnNoAsistire">No podré asistir</button>
+  </div>
+
+  <a href="https://maps.google.com/?q=Palacio+de+los+Deportes,+CDMX" target="_blank">
+    📍 Ver ubicación en Google Maps
+  </a>
+
+  <script>
+    const URL_API = "http://localhost:3000"; // backend local
+
+    document.getElementById("btnConfirmar").addEventListener("click", async () => {
+      const nombre = prompt("Por favor, ingresa tu nombre completo:");
+      const telefono = prompt("Ingresa tu número de WhatsApp (ejemplo: +52XXXXXXXXXX):");
+
+      if (!nombre || !telefono) {
+        alert("Debes ingresar tu nombre y teléfono para confirmar.");
+        return;
+      }
+
+      const respuesta = await fetch(`${URL_API}/api/confirmar`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, telefono }),
+      });
+
+      const texto = await respuesta.text();
+      alert(texto);
+    });
+
+    document.getElementById("btnNoAsistire").addEventListener("click", async () => {
+      const nombre = prompt("Por favor, ingresa tu nombre completo:");
+      const telefono = prompt("Ingresa tu número de WhatsApp (ejemplo: +52XXXXXXXXXX):");
+
+      if (!nombre || !telefono) {
+        alert("Debes ingresar tu nombre y teléfono.");
+        return;
+      }
+
+      const respuesta = await fetch(`${URL_API}/api/no-asistire`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, telefono }),
+      });
+
+      const texto = await respuesta.text();
+      alert(texto);
+    });
+  </script>
+</body>
+</html>
