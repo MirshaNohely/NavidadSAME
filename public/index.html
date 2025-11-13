@@ -51,21 +51,29 @@
 
 
     <!-- Area de video -->
-    <section class="mb-4">
-      <!-- Puede ser iframe (YouTube) o un <video> local/mp4 -->
-
-        <div class="aspect-video bg-black rounded overflow-hidden relative">
-    <video id="inviteVideo"
-           class="w-full h-full object-cover"
-           autoplay
-           muted
-           playsinline
-           preload="auto">
-      <source src="video.mp4" type="video/mp4">
+    <section class="mb-6">
+  <!-- Video para web -->
+  <div class="hidden md:block aspect-video bg-black overflow-hidden relative shadow-md">
+    <video
+      id="videoDesktop"
+      class="w-full h-full object-cover"
+      autoplay
+      playsinline
+      preload="auto"
+      controls
+    >
+      <source src="videoweb.mp4" type="video/mp4">
       Tu navegador no soporta la etiqueta <code>video</code>.
     </video>
-      </div>
-    </section>
+  </div>
+
+  <!-- Video para móvil -->
+ <div class="block md:hidden aspect-[9/16] bg-black  overflow-hidden relative shadow-md mx-auto max-w-xs">
+  <video id="videoMobile" class="w-full h-full object-cover" autoplay="" playsinline="" preload="auto" controls="">
+    <source src="videomovil.mp4" type="video/mp4">
+    Tu navegador no soporta la etiqueta <code>video</code>.
+  </video>
+</div>
 
     <!-- Sección principal de invitación -->
 <section class="relative w-full h-72 mb-6 overflow-hidden flex justify-center items-center">
