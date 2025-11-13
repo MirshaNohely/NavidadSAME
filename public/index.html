@@ -35,14 +35,16 @@
   animation: float 4s ease-in-out infinite;
 }
 
-
+.max-w-xs {
+  max-width: 24rem !important;
+}
 
 
   </style>
 </head>
 
 <body class=" bg-gradient-to-b from-[#0d2755] to-black  flex items-center justify-center p-0 m-0">
-  <main class="h-full w-full border border-slate-200 rounded-none shadow-inner p-6 overflow-auto card ">
+  <main class="h-full w-full   rounded-none shadow-inner overflow-auto card ">
     <!-- Header: logo y título -->
 <!-- Encabezado decorativo -->
 <header>
@@ -54,14 +56,7 @@
     <section class="mb-6">
   <!-- Video para web -->
   <div class="hidden md:block aspect-video bg-black overflow-hidden relative shadow-md">
-    <video
-      id="videoDesktop"
-      class="w-full h-full object-cover"
-      autoplay
-      playsinline
-      preload="auto"
-      controls
-    >
+    <video id="videoDesktop" class="w-full h-full object-cover" autoplay="" playsinline="" preload="auto" controls="">
       <source src="videoweb.mp4" type="video/mp4">
       Tu navegador no soporta la etiqueta <code>video</code>.
     </video>
@@ -74,9 +69,18 @@
     Tu navegador no soporta la etiqueta <code>video</code>.
   </video>
 </div>
+<!--script>
+  const videoMobile = document.getElementById('videoMobile');
+  videoMobile.addEventListener('click', () => {
+    if (videoMobile.paused) {
+      videoMobile.play();
+    }
+  });
+</script-->
+</section>
 
     <!-- Sección principal de invitación -->
-<section class="relative w-full h-72 mb-6 overflow-hidden flex justify-center items-center">
+<section class="relative w-full h-72 mb-6 p-6 overflow-hidden flex justify-center items-center">
     <!-- Imágenes decorativas flotantes -->
   <img src="https://img.icons8.com/fluency/48/snow-storm.png" alt="Adorno navideño" class="absolute top-6 left-10 w-24 drop-shadow-lg float">
 
@@ -97,7 +101,7 @@
 
 
     <!-- Botones de respuesta -->
-<section class="mb-4 flex flex-col gap-3">
+<section class="mb-4 flex flex-col p-6 gap-3">
       <div class="flex gap-3">
         <button id="confirmBtn" class="flex-1 py-3 bg-gradient-to-r shadow-lg hover:scale-105 active:scale-95 rounded-lg bg-gradient-to-r from-green-500 to-green-600text-white font-medium hover:bg-green-700">✅ Confirmar asistencia</button>
         <button id="declineBtn" class="flex-1 py-3 bg-gradient-to-r shadow-lg hover:scale-105 active:scale-95 rounded-lg bg-gradient-to-r bg-gradient-to-r from-red-500 text-black font-medium hover:bg-red-700">❌ No podré asistir</button>
@@ -129,28 +133,19 @@
 
     <!-- Ubicación -->
 
-<section class="mb-6 p-4 bg-slate-50 rounded-xl shadow-md">
+<section class="mb-6 p-6 bg-slate-50 rounded-xl shadow-md">
   <h3 class="text-lg font-semibold mb-2">📍 Ubicación</h3>
   
   <!-- Mapa embebido -->
   <div class="w-full h-64 mb-3 rounded-lg overflow-hidden shadow-sm">
-    <iframe
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.123456789!2d-99.133209!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1234567890%3A0xabcdef1234567890!2sAv.+Ju%C3%A1rez+123%2C+Ciudad+de+M%C3%A9xico!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx"
-      width="100%"
-      height="100%"
-      style="border:0;"
-      allowfullscreen=""
-      loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.123456789!2d-99.133209!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1234567890%3A0xabcdef1234567890!2sAv.+Ju%C3%A1rez+123%2C+Ciudad+de+M%C3%A9xico!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
 
   <!-- Enlace a Google Maps -->
   <p class="text-sm text-slate-700">
     ¿Quieres ver la ubicación completa en Maps? 
-    <a href="https://www.google.com/maps/place/Virgen+de+las+Virtudes+Pte.,+La+Guadalupana,+55060+Ecatepec+de+Morelos,+Méx./@19.6204402,-99.0135958,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f1fdebe8cc85:0xee5650664b67c6d!8m2!3d19.6204402!4d-99.0135958!16s%2Fg%2F11h5r_475k!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D" 
-       target="_blank" 
-       class="text-sky-600 font-medium hover:underline">
+    <a href="https://www.google.com/maps/place/Virgen+de+las+Virtudes+Pte.,+La+Guadalupana,+55060+Ecatepec+de+Morelos,+Méx./@19.6204402,-99.0135958,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f1fdebe8cc85:0xee5650664b67c6d!8m2!3d19.6204402!4d-99.0135958!16s%2Fg%2F11h5r_475k!17m2!4m1!1e3!18m1!1e1?entry=ttu&amp;g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-sky-600 font-medium hover:underline">
       Abrir en Maps
     </a>
   </p>
@@ -159,14 +154,14 @@
 
 
 
-    <section class="mb-4">
+    <section class="mb-4 p-6">
       <h3 class="font-medium">Ubicación</h3>
-      <p class="text-sm text-slate-600">Dirección: <a id="mapsLink" href="https://www.google.com/maps/place/Virgen+de+las+Virtudes+Pte.,+La+Guadalupana,+55060+Ecatepec+de+Morelos,+Méx./@19.6204402,-99.0135958,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f1fdebe8cc85:0xee5650664b67c6d!8m2!3d19.6204402!4d-99.0135958!16s%2Fg%2F11h5r_475k!17m2!4m1!1e3!18m1!1e1?entry=ttu&g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-sky-600 boton-ubicacion underline">Abrir en Maps</a></p>
+      <p class="text-sm text-slate-600">Dirección: <a id="mapsLink" href="https://www.google.com/maps/search/?api=1&amp;query=Virgen%20de%20las%20Virtudes%20Pte.%2C%20La%20Guadalupana%2C%2055060%20Ecatepec%20de%20Morelos%2C%20M%C3%A9x." target="_blank" class="text-sky-600 boton-ubicacion underline">Abrir en Maps</a></p>
     </section>
 
     <!-- Resumen visible (opcional) -->
-    <section class="text-sm text-slate-700 border-t pt-3">
-      <p>Estado de tu respuesta: <strong id="statusText">No respondiste</strong></p>
+    <section class="text-sm text-slate-700 border-t p-6 pt-3">
+      <p>Estado de tu respuesta: <strong id="statusText">Confirmado — 4 persona(s)</strong></p>
       <p class="mt-2 text-xs text-slate-500">Este demo usa <code>localStorage</code> para evitar duplicados en el mismo navegador y muestra cómo integrarlo con un backend real para idempotencia y reportes semanales.</p>
     </section>
   </main>
@@ -316,5 +311,7 @@
     */
 
   </script>
+
+
 </body>
 </html>
