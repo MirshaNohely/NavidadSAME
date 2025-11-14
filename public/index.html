@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Invitación — SAME</title>
   <!-- Tailwind CDN (rápido para prototipo) -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+
   <link rel="stylesheet" href="./dist/output.css">
 
   <style>
@@ -57,25 +58,18 @@
     <img src="https://img.icons8.com/fluency/48/snow-storm.png" alt="Adorno navideño" class="absolute top-6 right-10 w-24 drop-shadow-lg float"><!-- Area de video -->
     <section class="mb-6">
   <!-- Video para web -->
-  <div class="hidden md:block aspect-video bg-black overflow-hidden relative shadow-md">
+  <div class=" bg-black overflow-hidden relative ">
     <video id="videoDesktop" class="w-full h-full object-cover" autoplay="" playsinline="" preload="auto" controls="">
       <source src="videoweb.mp4" type="video/mp4">
       Tu navegador no soporta la etiqueta <code>video</code>.
     </video>
   </div>
 
-  <!-- Video para móvil -->
- <div class="block md:hidden aspect-[9/16] bg-black  overflow-hidden relative shadow-md mx-auto max-w-xs">
-  <video id="videoMobile" class="w-full h-full object-cover" autoplay="" playsinline="" preload="auto" controls="">
-    <source src="videomovil.mp4" type="video/mp4">
-    Tu navegador no soporta la etiqueta <code>video</code>.
-  </video>
-</div>
 <script>
-  const videoMobile = document.getElementById('videoMobile');
-  videoMobile.addEventListener('click', () => {
-    if (videoMobile.paused) {
-      videoMobile.play();
+  const videoDesktop = document.getElementById('videoDesktop');
+  videoDesktop.addEventListener('click', () => {
+    if (videoDesktop.paused) {
+      videoDesktop.play();
     }
   });
 </script>
