@@ -102,6 +102,79 @@
 </section>
 
 
+
+
+
+
+    <!-- Sección de confirmación -->
+
+
+
+    
+<!--section class="mb-8 px-4">
+  <h3 class="font-semibold mb-4 text-xl text-center text-slate-700">
+    Confirma tu asistencia
+  </h3>
+
+  <div class="flex flex-col gap-4 items-center">
+
+    -- Nombre --
+    <input id="nombreInput" type="text" placeholder="Tu nombre" class="w-72 p-3 border border-slate-300 rounded-lg text-center shadow focus:ring-2 focus:ring-sky-400" required="">
+
+     Número de asistentes --
+    <div class="flex gap-2 items-center">
+      <input id="attendeesInput" type="number" min="1" value="1" class="w-24 p-3 border border-slate-300 rounded-lg shadow text-center focus:ring-2 focus:ring-sky-400">
+      <span class="text-sm text-slate-600">personas</span>
+    </div>
+
+    !-- Botones --
+    <div id="buttonsContainer" class="w-full flex flex-col items-center gap-3">
+
+      !-- Confirmar --
+      <button id="confirmBtn" class="w-72 py-3 rounded-lg shadow-lg 
+               bg-gradient-to-r from-green-500 to-green-600 text-white font-medium
+               transition-all hover:scale-105 active:scale-95 hover:bg-green-700">
+        ✅ Confirmar asistencia
+      </button>
+
+      -- Rechazar --
+      <button id="declineBtn" class="w-72 py-3 rounded-lg shadow-lg
+               bg-gradient-to-r from-red-500 to-red-600 text-white font-medium
+               transition-all hover:scale-105 active:scale-95 hover:bg-red-700">
+        ❌ No podré asistir
+      </button>
+
+    </div>
+
+  </div>
+
+  <-- Panel de rechazo --
+  <div id="declinePanel" class="hidden mt-6 p-4 border rounded-xl bg-red-50 text-slate-700 shadow-sm">
+    <p class="text-sm mb-3">
+      Lamentamos que no puedas asistir. ¿Quieres enviar una nota a la anfitriona?
+    </p>
+
+    <div class="flex flex-col gap-3">
+
+      <button id="sendDeclineWhatsappBtn" class="w-full py-3 rounded-lg shadow-lg 
+               bg-gradient-to-r from-sky-500 to-sky-600 text-white font-medium
+               transition hover:scale-105 active:scale-95">
+        Enviar nota por WhatsApp
+      </button>
+
+      <button id="declineLocalBtn" class="w-full py-3 rounded-lg border border-slate-300 bg-white shadow font-medium 
+               transition hover:bg-slate-100 hover:scale-105 active:scale-95">
+        Registrar aquí
+      </button>
+
+    </div>
+  </div>
+</section-->
+
+
+
+
+
     <!-- Botones de respuesta -->
 <section class="mb-4 flex flex-col p-6 gap-3">
       <div class="flex gap-3">
@@ -137,29 +210,32 @@
 
 <section class="mb-6 p-6 bg-slate-50 rounded-xl shadow-md">
   <h3 class="text-lg font-semibold mb-2">📍 Ubicación</h3>
-  
-  <!-- Mapa embebido -->
+
+  <!-- Mapa embebido: Virgen de las Virtudes, La Guadalupana, Ecatepec -->
   <div class="w-full h-64 mb-3 rounded-lg overflow-hidden shadow-sm">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.123456789!2d-99.133209!3d19.432608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff1234567890%3A0xabcdef1234567890!2sAv.+Ju%C3%A1rez+123%2C+Ciudad+de+M%C3%A9xico!5e0!3m2!1ses!2smx!4v1700000000000!5m2!1ses!2smx" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    <iframe
+      src="https://www.google.com/maps?q=Virgen%20de%20las%20Virtudes%20Pte.%2C%20La%20Guadalupana%2C%2055060%20Ecatepec%20de%20Morelos%2C%20M%C3%A9x.&output=embed"
+      width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
     </iframe>
   </div>
 
   <!-- Enlace a Google Maps -->
   <p class="text-sm text-slate-700">
-    ¿Quieres ver la ubicación completa en Maps? 
-    <a href="https://www.google.com/maps/place/Virgen+de+las+Virtudes+Pte.,+La+Guadalupana,+55060+Ecatepec+de+Morelos,+Méx./@19.6204402,-99.0135958,17z/data=!3m1!4b1!4m6!3m5!1s0x85d1f1fdebe8cc85:0xee5650664b67c6d!8m2!3d19.6204402!4d-99.0135958!16s%2Fg%2F11h5r_475k!17m2!4m1!1e3!18m1!1e1?entry=ttu&amp;g_ep=EgoyMDI1MTEwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="text-sky-600 font-medium hover:underline">
+    ¿Quieres ver la ubicación completa en Maps?
+    <a href="https://www.google.com/maps/search/?api=1&query=Virgen%20de%20las%20Virtudes%20Pte.%2C%20La%20Guadalupana%2C%2055060%20Ecatepec%20de%20Morelos%2C%20M%C3%A9x."
+       target="_blank" class="text-sky-600 font-medium hover:underline">
       Abrir en Maps
     </a>
   </p>
 </section>
 
-
-
-
     <section class="mb-4 p-6">
       <h3 class="font-medium">Ubicación</h3>
       <p class="text-sm text-slate-600">Dirección: <a id="mapsLink" href="https://www.google.com/maps/search/?api=1&amp;query=Virgen%20de%20las%20Virtudes%20Pte.%2C%20La%20Guadalupana%2C%2055060%20Ecatepec%20de%20Morelos%2C%20M%C3%A9x." target="_blank" class="text-sky-600 boton-ubicacion underline">Abrir en Maps</a></p>
     </section>
+
+
 
     <!-- Resumen visible (opcional) -->
     <section class="text-sm text-slate-700 border-t p-6 pt-3">
@@ -167,7 +243,151 @@
       <p class="mt-2 text-xs text-slate-500">Este demo usa <code>localStorage</code> para evitar duplicados en el mismo navegador y muestra cómo integrarlo con un backend real para idempotencia y reportes semanales.</p>
     </section>
   </main>
+  <!--script>
+    /* ---------- CONFIG (Reemplazar en producción) ---------- */
+    const CONFIG = {
+      BOT_WHATSAPP_NUMBER: '5212345678900', // formato internacional sin + (ejemplo: 521234...)
+      HOST_PHONE_FOR_REPORTS: '5210987654321', // número de la anfitriona (para notificaciones), si se usa API
+      API_BASE: '/api', // endpoint servidor para confirmaciones definitivas
+      WEEKLY_REPORT_SUBSCRIBE_ENDPOINT: '/api/subscribe-weekly-report'
+    };
 
+    /* ---------- UTIL: lectura de parámetros URL para personalizar invitado ---------- */
+    function getQueryParams() {
+      const p = {};
+      location.search.replace(/^[?]/,'').split('&').forEach(pair => {
+        if(!pair) return;
+        const [k,v] = pair.split('=').map(decodeURIComponent);
+        p[k] = v;
+      });
+      return p;
+    }
+
+    const params = getQueryParams();
+    const guestName = params.guest || params.nombre || 'Invitado';
+    const token = params.token || null; // token único para identificar al usuario (recomendado)
+
+    // Rellenar UI
+    document.getElementById('guestNameSpan').textContent = guestName;
+
+    // Maps: aceptar lat/lng o dirección
+    const maps = params.maps || 'Virgen de las Virtudes Pte., La Guadalupana, 55060 Ecatepec de Morelos, Méx.';
+    document.getElementById('mapsLink').href = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(maps)}`;
+
+    /* ---------- Control de estado local para evitar duplicados en este navegador ---------- */
+    const storageKey = `invite_confirm_${token||guestName}`;
+    function loadLocalState(){
+      try { return JSON.parse(localStorage.getItem(storageKey)) || {status:'none',attendees:0}; } catch(e){return {status:'none',attendees:0};}
+    }
+    function saveLocalState(s){ localStorage.setItem(storageKey, JSON.stringify(s)); }
+
+    const state = loadLocalState();
+    const statusText = document.getElementById('statusText');
+    function refreshStatus(){
+      if(state.status==='confirmed') statusText.textContent = `Confirmado — ${state.attendees} persona(s)`;
+      else if(state.status==='declined') statusText.textContent = 'Declinaste la invitación';
+      else statusText.textContent = 'No respondiste';
+    }
+    refreshStatus();
+
+    /* ---------- Botones y comportamientos ---------- */
+    const confirmBtn = document.getElementById('confirmBtn');
+    const declineBtn = document.getElementById('declineBtn');
+    const confirmPanel = document.getElementById('confirmPanel');
+    const declinePanel = document.getElementById('declinePanel');
+    const attendeesInput = document.getElementById('attendeesInput');
+    const sendWhatsappBtn = document.getElementById('sendWhatsappBtn');
+    const confirmLocalBtn = document.getElementById('confirmLocalBtn');
+    const sendDeclineWhatsappBtn = document.getElementById('sendDeclineWhatsappBtn');
+    const declineLocalBtn = document.getElementById('declineLocalBtn');
+
+    confirmBtn.addEventListener('click', ()=>{
+      confirmPanel.classList.toggle('hidden');
+      declinePanel.classList.add('hidden');
+    });
+    declineBtn.addEventListener('click', ()=>{
+      declinePanel.classList.toggle('hidden');
+      confirmPanel.classList.add('hidden');
+    });
+
+    /* Enviar pre-mensaje a WhatsApp (abre chat en web/cliente con mensaje prellenado) */
+    function makeWhatsAppUrl(number, text){
+      const base = `https://wa.me/${number}`;
+      return `${base}?text=${encodeURIComponent(text)}`;
+    }
+
+    sendWhatsappBtn.addEventListener('click', ()=>{
+      const attendees = Math.max(1, parseInt(attendeesInput.value||1));
+      // Mensaje estructurado que el bot debería saber interpretar
+      const msg = `CONFIRMACION|guest:${guestName}|token:${token||'none'}|attendees:${attendees}|event:[EVENT_ID]`;
+      const url = makeWhatsAppUrl(CONFIG.BOT_WHATSAPP_NUMBER, msg);
+      // Abrir WhatsApp (el usuario debe enviar el mensaje). En producción se recomienda un backend que use la API para enviar/recibir.
+      window.open(url, '_blank');
+      // Guardar pre-estado localmente (evitar re-envíos desde mismo navegador)
+      state.status = 'pending_whatsapp'; state.attendees = attendees; saveLocalState(state); refreshStatus();
+    });
+
+    /* Confirmar localmente (usado como respaldo si no se completa por WhatsApp) */
+    confirmLocalBtn.addEventListener('click', async ()=>{
+      const attendees = Math.max(1, parseInt(attendeesInput.value||1));
+      // Actualización local inmediata
+      state.status = 'confirmed'; state.attendees = attendees; saveLocalState(state); refreshStatus();
+
+      // Intentar notificar al backend (si existe)
+      try{
+        await fetch(CONFIG.API_BASE+"/confirm",{
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({guest:guestName, token, attendees, source:'web'})
+        });
+      }catch(e){ console.warn('No se pudo notificar al backend:',e); }
+
+      alert('Gracias — tu confirmación quedó registrada (local). En producción el robot de WhatsApp también la procesará.');
+    });
+
+    /* Declinar: enviar WhatsApp o guardar local */
+    sendDeclineWhatsappBtn.addEventListener('click', ()=>{
+      const msg = `DECLINO|guest:${guestName}|token:${token||'none'}|event:[EVENT_ID]`;
+      window.open(makeWhatsAppUrl(CONFIG.BOT_WHATSAPP_NUMBER, msg), '_blank');
+      state.status = 'declined'; state.attendees = 0; saveLocalState(state); refreshStatus();
+    });
+    declineLocalBtn.addEventListener('click', async ()=>{
+      state.status = 'declined'; state.attendees = 0; saveLocalState(state); refreshStatus();
+      try{
+        await fetch(CONFIG.API_BASE+"/decline",{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({guest:guestName, token, source:'web'})});
+      }catch(e){}
+      alert('Se registró tu declinación (local).');
+    });
+
+    /* ---------- Suscripción al reporte semanal (opcional) ---------- */
+    // Si el enlace token está presente, podemos (desde frontend) pedir suscripción al reporte semanal para la anfitriona.
+    async function subscribeWeeklyReport(){
+      try{
+        await fetch(CONFIG.WEEKLY_REPORT_SUBSCRIBE_ENDPOINT, {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({eventId:'[EVENT_ID]', hostPhone:CONFIG.HOST_PHONE_FOR_REPORTS})});
+      }catch(e){/* no crítico */}
+    }
+    // subscribeWeeklyReport(); // descomentar si ya tienes backend
+
+    /* ---------- Advertencias y notas de seguridad / integridad ---------- */
+    /*
+      IMPORTANTE: este prototipo incorpora medidas CLIENT-SIDE (localStorage + token en URL) para evitar
+      que la misma persona confirme varias veces desde el MISMO dispositivo/ navegador. Esto NO evita
+      fraude si alguien confirma desde distintos dispositivos o intenta manipular el conteo.
+
+      Recomendación de producción (resumen):
+        1) Generar un token único por invitado y tramar URLs personalizadas: ?token=abc123&guest=Nombre
+        2) Implementar un backend (Node.js / Express) con base de datos (Postgres, MySQL o Firestore)
+           que registre cada confirmación con marca de tiempo y token.
+        3) Cuando el BOT de WhatsApp reciba un mensaje, validar el token contra la base de datos y
+           solo aceptar la confirmación si el token no ha sido usada o si la nueva confirmación es una
+           actualización legítima (ej. reducir asistentes) según reglas de negocio.
+        4) Emplear idempotencia: confirmar por token — si ya existe, actualizar en lugar de sumar doble.
+        5) Para enviar mensajes automáticos (bot), usar Twilio API o la API oficial de WhatsApp Business
+           en el backend para no depender de que el usuario pulse enviar en su app.
+        6) Generar reportes semanales con un cron job (ej. cron en Node, Google Cloud Scheduler, o AWS CloudWatch Events)
+           que compile conteos y envíe a la anfitriona (WhatsApp/Email).
+    */
+
+  </script--->
   <script>
     /* ---------- CONFIG (Reemplazar en producción) ---------- */
     const CONFIG = {

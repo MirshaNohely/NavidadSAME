@@ -122,7 +122,138 @@ cron.schedule("0 9 * * 1", () => {
 
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
 
-/*
+
+
+    /*
+// index.js
+import express from "express";
+import bodyParser from "body-parser";
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import dotenv from "dotenv";
+import twilio from "twilio";
+import cron from "node-cron";
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Twilio client
+const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+// Middleware
+app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, "public")));
+
+// Ruta de confirmación
+app.post("/api/confirm", (req, res) => {
+  const { guest, token, attendees, source } = req.body;
+
+  if (!guest) return res.status(400).json({ error: "Falta el nombre del invitado" });
+
+  const filePath = path.join(__dirname, "data", "confirmaciones.json");
+  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const existing = data.find((x) => x.token === token);
+
+  if (existing) {
+    existing.attendees = attendees;
+    existing.source = source;
+    existing.updatedAt = new Date().toISOString();
+  } else {
+    data.push({
+      guest,
+      token,
+      attendees,
+      source,
+      status: "confirmed",
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+  // Enviar WhatsApp a la anfitriona (si está configurado)
+  client.messages.create({
+    from: process.env.TWILIO_WHATSAPP_NUMBER,
+    to: process.env.HOST_PHONE_NUMBER,
+    body: `✅ ${guest} confirmó asistencia (${attendees} personas)`,
+  });
+
+  res.json({ mensaje: "Confirmación guardada y enviada a anfitriona." });
+});
+
+// Ruta de declinación
+app.post("/api/decline", (req, res) => {
+  const { guest, token, source } = req.body;
+
+  const filePath = path.join(__dirname, "data", "confirmaciones.json");
+  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  const existing = data.find((x) => x.token === token);
+
+  if (existing) {
+    existing.status = "declined";
+    existing.updatedAt = new Date().toISOString();
+  } else {
+    data.push({
+      guest,
+      token,
+      status: "declined",
+      source,
+      createdAt: new Date().toISOString(),
+    });
+  }
+
+  fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+
+  // Notificar por WhatsApp
+  client.messages.create({
+    from: process.env.TWILIO_WHATSAPP_NUMBER,
+    to: process.env.HOST_PHONE_NUMBER,
+    body: `❌ ${guest} no podrá asistir.`,
+  });
+
+  res.json({ mensaje: "Declinación guardada y enviada a anfitriona." });
+});
+
+// Ruta para probar conexión
+app.get("/api/ping", (_, res) => {
+  res.send("Servidor activo 🎉");
+});
+
+// Cron para reporte semanal (lunes 9am)
+cron.schedule("0 9 * * 1", () => {
+  const filePath = path.join(__dirname, "data", "confirmaciones.json");
+  const data = JSON.parse(fs.readFileSync(filePath, "utf8"));
+
+  const total = data.filter((x) => x.status === "confirmed").length;
+  const detalles = data
+    .filter((x) => x.status === "confirmed")
+    .map((x) => `${x.guest} (${x.attendees})`)
+    .join(", ");
+
+  const mensaje = `📊 Reporte semanal:\nConfirmados: ${total}\n${detalles || "Nadie confirmado aún."}`;
+
+  client.messages.create({
+    from: process.env.TWILIO_WHATSAPP_NUMBER,
+    to: process.env.HOST_PHONE_NUMBER,
+    body: mensaje,
+  });
+
+  console.log("Reporte semanal enviado.");
+});
+
+app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
+
+
+
+
+
+
 import express from "express";
 import fs from "fs";
 import path from "path";

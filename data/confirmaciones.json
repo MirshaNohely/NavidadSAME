@@ -7,10 +7,10 @@
   {
     "guest": "Invitado",
     "token": null,
-    "attendees": 4,
+    "attendees": 1,
     "source": "web",
     "status": "declined",
     "createdAt": "2025-11-12T04:16:39.798Z",
-    "updatedAt": "2025-11-12T23:04:34.660Z"
+    "updatedAt": "2025-11-13T22:26:12.492Z"
   }
 ]
